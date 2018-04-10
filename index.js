@@ -470,7 +470,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        },
 	        clearOutside: {
 	            type: Boolean,
-	            default: true
+	            default: false
 	        }
 	    },
 	    methods: {
