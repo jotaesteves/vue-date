@@ -4,7 +4,7 @@
             <div v-if="isValueEmpty" class="input" @click="togglePanel">Select {{range? 'dates':'date'}}</div>
             <div v-else class="input" @click="togglePanel" v-text="range ? 'From '+value[0] + ' to ' + value[1] : value"></div>
             <transition name="fade">
-                <img class="cancel-btn" src="./cancel.png" v-if="enableClear" v-show="showCancel" @click="clear">
+                <img class="cancel-btn" :class="{'outside':clearOutside}" src="./cancel.png" v-if="enableClear" v-show="showCancel" @click="clear">
             </transition>
         </div>
         <transition name="toggle">
@@ -109,6 +109,10 @@
                 default: false
             },
             enableClear: {
+                type: Boolean,
+                default: true
+            },
+            clearOutside: {
                 type: Boolean,
                 default: true
             }
@@ -430,6 +434,10 @@
     .cancel-btn{
         height: 14px;
         width: 14px;
+    }
+    .cancel-btn.outside{
+        position: absolute;
+        right: 9px;
     }
     .date-panel{
         position: absolute;
