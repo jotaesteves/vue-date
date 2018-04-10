@@ -1,7 +1,8 @@
 <template>
     <div class="date-picker">
         <div class="input-wrapper" @mouseenter="showCancel = true" @mouseleave="showCancel = false">
-            <div class="input" @click="togglePanel" v-text="range ? value[0] + ' -- ' + value[1] : value"></div>
+            <div v-if="isValueEmpty" class="input" @click="togglePanel">Select {{range? 'dates':'date'}}</div>
+            <div v-else class="input" @click="togglePanel" v-text="range ? 'From '+value[0] + ' to ' + value[1] : value"></div>
             <transition name="fade">
                 <img class="cancel-btn" src="./cancel.png" v-show="showCancel" @click="clear">
             </transition>
@@ -27,7 +28,7 @@
                     <ul class="year-list">
                         <li v-for="item in yearList"
                             v-text="item"
-                            :class="{selected: isSelected('year', item), invalid: validateYear(item)}" 
+                            :class="{selected: isSelected('year', item), invalid: validateYear(item)}"
                             @click="selectYear(item)"
                         >
                         </li>
@@ -36,7 +37,7 @@
                 <div class="type-month" v-show="panelType === 'month'">
                     <ul class="month-list">
                         <li v-for="(item, index) in monthList"
-                            :class="{selected: isSelected('month', index), invalid: validateMonth(index)}" 
+                            :class="{selected: isSelected('month', index), invalid: validateMonth(index)}"
                             @click="selectMonth(index)"
                         >
                             {{item | month(language)}}
@@ -117,18 +118,18 @@
                 switch (type){
                     case 'year':
                         if(!this.range) return item === this.tmpYear
-                        return (new Date(item, 0).getTime() >= new Date(this.tmpStartYear, 0).getTime() 
+                        return (new Date(item, 0).getTime() >= new Date(this.tmpStartYear, 0).getTime()
                             && new Date(item, 0).getTime() <= new Date(this.tmpEndYear, 0).getTime())
                     case 'month':
                         if(!this.range) return item === this.tmpMonth && this.year === this.tmpYear
-                        return (new Date(this.tmpYear, item).getTime() >= new Date(this.tmpStartYear, this.tmpStartMonth).getTime() 
+                        return (new Date(this.tmpYear, item).getTime() >= new Date(this.tmpStartYear, this.tmpStartMonth).getTime()
                             && new Date(this.tmpYear, item).getTime() <= new Date(this.tmpEndYear, this.tmpEndMonth).getTime())
                     case 'date':
                         if(!this.range) return this.date === item.value && this.month === this.tmpMonth && item.currentMonth
                         let month = this.tmpMonth
                         item.previousMonth && month--
                         item.nextMonth && month++
-                        return (new Date(this.tmpYear, month, item.value).getTime() >= new Date(this.tmpStartYear, this.tmpStartMonth, this.tmpStartDate).getTime() 
+                        return (new Date(this.tmpYear, month, item.value).getTime() >= new Date(this.tmpStartYear, this.tmpStartMonth, this.tmpStartDate).getTime()
                             && new Date(this.tmpYear, month, item.value).getTime() <= new Date(this.tmpEndYear, this.tmpEndMonth, this.tmpEndDate).getTime())
                 }
             },
@@ -198,7 +199,7 @@
                         this.rangeStart = true
 
                     }else if(this.range && this.rangeStart){
-                        
+
                         this.tmpEndYear = this.tmpYear
                         this.tmpEndMonth = this.tmpMonth
                         this.tmpEndDate = date.value
@@ -207,7 +208,7 @@
                             d2 = new Date(this.tmpEndYear, this.tmpEndMonth, this.tmpEndDate).getTime()
                         if(d1 > d2){
                             let tmpY, tmpM, tmpD
-                            tmpY = this.tmpEndYear 
+                            tmpY = this.tmpEndYear
                             tmpM = this.tmpEndMonth
                             tmpD = this.tmpEndDate
 
@@ -305,6 +306,9 @@
                     dateList[dateList.length] = {nextMonth: true, value: item}
                 }
                 return dateList
+            },
+            isValueEmpty: function () {
+                return (!this.value[0] && !this.value[1])
             }
         },
         filters: {
@@ -375,7 +379,7 @@
                     }else{
                         this.$emit('input', ['', ''])
                     }
-                    
+
                 }
                 if(!this.value){
                     this.$emit('input', '')
@@ -570,7 +574,7 @@
                 color: #ccc;
             }
         }
-        
+
     }
     .weeks{
         display: flex;
