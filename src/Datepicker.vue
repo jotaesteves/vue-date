@@ -1,6 +1,6 @@
 <template>
     <div class="date-picker">
-        <div class="input-wrapper" @mouseenter="showCancel = true" @mouseleave="showCancel = false">
+        <div class="input-wrapper" :class="{'disabled':disabled}" @mouseenter="showCancel = true" @mouseleave="showCancel = false">
             <div v-if="isValueEmpty" class="input" @click="togglePanel">Select {{range? 'dates':'date'}}</div>
             <div v-else class="input" @click="togglePanel" v-text="range ? 'From '+value[0] + ' to ' + value[1] : value"></div>
             <transition name="fade">
@@ -115,10 +115,17 @@
             clearOutside: {
                 type: Boolean,
                 default: false
-            }
+            },
+            disabled: {
+                type: Boolean,
+                default: false
+            },
         },
         methods: {
             togglePanel () {
+                if(this.disabled){
+                    return false
+                }
                 this.panelState = !this.panelState
                 this.rangeStart = false
             },
