@@ -1,5 +1,5 @@
 <template>
-    <div class="date-picker fgAlt">
+    <div class="date-picker">
         <div class="input-wrapper" :class="{'disabled':disabled}" @mouseenter="showCancel = true" @mouseleave="showCancel = false">
             <div v-if="isValueEmpty" class="input" @click="togglePanel">Select {{range? 'dates':'date'}}</div>
             <div v-else class="input" @click="togglePanel" v-text="range ? 'From '+value[0] + ' to ' + value[1] : value"></div>
@@ -437,6 +437,10 @@
         padding-left: 4px;
         box-sizing: border-box;
         outline: none;
+    }
+    .disabled .input{
+        color: #8ca0b3 !important;
+        cursor: not-allowed;
     }
     .cancel-btn{
         height: 14px;
