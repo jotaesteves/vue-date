@@ -1,5 +1,5 @@
 <template>
-    <div class="date-picker">
+    <div class="date-picker fgAlt">
         <div class="input-wrapper" :class="{'disabled':disabled}" @mouseenter="showCancel = true" @mouseleave="showCancel = false">
             <div v-if="isValueEmpty" class="input" @click="togglePanel">Select {{range? 'dates':'date'}}</div>
             <div v-else class="input" @click="togglePanel" v-text="range ? 'From '+value[0] + ' to ' + value[1] : value"></div>
