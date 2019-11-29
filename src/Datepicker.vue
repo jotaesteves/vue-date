@@ -344,9 +344,9 @@
                 }
 
                 if(this.showFromTo){
-                    return this.range ? 'From '+dateFrom + ' to ' + tempDateTo : this.value
+                    return this.range ? 'From '+dateFrom + ' to ' + dateTo : this.value
                 } else {
-                    return this.range ? dateFrom + ' - ' + tempDateTo : this.value
+                    return this.range ? dateFrom + ' - ' + dateTo : this.value
                 }
             }
         },
