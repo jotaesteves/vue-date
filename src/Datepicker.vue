@@ -378,12 +378,12 @@
                 }else{
                     this.coordinates = {left: '0', top: `${window.getComputedStyle(this.$el.children[0]).offsetHeight + 4}px`}
                 }
-                let minArr = this.min.split('-')
+                let minArr = this.min.split('/')
                 this.minYear = Number(minArr[0])
                 this.minMonth = Number(minArr[1])
                 this.minDate = Number(minArr[2])
 
-                let maxArr = this.max.split('-')
+                let maxArr = this.max.split('/')
                 this.maxYear = Number(maxArr[0])
                 this.maxMonth = Number(maxArr[1])
                 this.maxDate = Number(maxArr[2])
@@ -393,8 +393,8 @@
                         throw new Error('Binding value must be an array in range mode.')
                     }
                     if(this.value.length){
-                        let rangeStart = this.value[0].split('-')
-                        let rangeEnd = this.value[1].split('-')
+                        let rangeStart = this.value[0].split('/')
+                        let rangeEnd = this.value[1].split('/')
                         this.tmpStartYear = Number(rangeStart[0])
                         this.tmpStartMonth = Number(rangeStart[1]) - 1
                         this.tmpStartDate = Number(rangeStart[2])
