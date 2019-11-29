@@ -2,7 +2,7 @@
     <div class="date-picker">
         <div class="input-wrapper" :class="{'disabled':disabled}" @mouseenter="showCancel = true" @mouseleave="showCancel = false">
             <div v-if="isValueEmpty" class="input" @click="togglePanel">Select {{range? 'dates':'date'}}</div>
-            <div v-else class="input" @click="togglePanel" v-text="range ? 'From '+value[0] + ' to ' + value[1] : value"></div>
+            <div v-else class="input" @click="togglePanel" v-text="pickerOutput"></div>
             <transition name="fade">
                 <img class="cancel-btn" :class="{'outside':clearOutside}" src="./cancel.png" v-if="enableClear" v-show="showCancel" @click="clear">
             </transition>
@@ -119,6 +119,10 @@
             disabled: {
                 type: Boolean,
                 default: false
+            },
+            showFromTo: {
+                type: Boolean,
+                default: true
             },
         },
         methods: {
@@ -324,6 +328,13 @@
             },
             isValueEmpty: function () {
                 return (!this.value[0] && !this.value[1])
+            },
+            pickerOutput: function () {
+                if(this.showFromTo){
+                    return this.range ? 'From '+this.value[0] + ' to ' + this.value[1] : this.value
+                } else {
+                    return this.range ? this.value[0] + ' - ' + this.value[1] : this.value
+                }
             }
         },
         filters: {
