@@ -337,14 +337,14 @@
                     let tempDateTo
 
                     tempDateFrom = this.value[0].split['-']
-                    if(tempDateFrom.length >= 3){
+                    if(tempDateFrom && tempDateFrom.length >= 3){
                         dateFrom = tempDateFrom[2]+'/'+tempDateFrom[1]+'/'+tempDateFrom[0]
                     } else {
                         dateFrom = this.value[0]
                     }
 
                     tempDateTo = this.value[1].split['-']
-                    if(tempDateTo.length >= 3){
+                    if(tempDateTo && tempDateTo.length >= 3){
                         dateTo = tempDateTo[2]+'/'+tempDateTo[1]+'/'+tempDateTo[0]
                     } else {
                         dateFrom = this.value[0]

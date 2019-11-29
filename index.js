@@ -695,14 +695,14 @@ return /******/ (function(modules) { // webpackBootstrap
 	                var tempDateTo = void 0;
 
 	                tempDateFrom = this.value[0].split['-'];
-	                if (tempDateFrom.length >= 3) {
+	                if (tempDateFrom && tempDateFrom.length >= 3) {
 	                    _dateFrom = tempDateFrom[2] + '/' + tempDateFrom[1] + '/' + tempDateFrom[0];
 	                } else {
 	                    _dateFrom = this.value[0];
 	                }
 
 	                tempDateTo = this.value[1].split['-'];
-	                if (tempDateTo.length >= 3) {
+	                if (tempDateTo && tempDateTo.length >= 3) {
 	                    _dateTo = tempDateTo[2] + '/' + tempDateTo[1] + '/' + tempDateTo[0];
 	                } else {
 	                    _dateFrom = this.value[0];
