@@ -285,16 +285,16 @@
         },
         watch: {
             min (v) {
-                let minArr = v.split('-')
-                this.minYear = Number(minArr[0])
+                let minArr = v.split('/')
+                this.minDate = Number(minArr[0])
                 this.minMonth = Number(minArr[1])
-                this.minDate = Number(minArr[2])
+                this.minYear = Number(minArr[2])
             },
             max (v) {
-                let maxArr = v.split('-')
-                this.maxYear = Number(maxArr[0])
+                let maxArr = v.split('/')
+                this.maxDate = Number(maxArr[0])
                 this.maxMonth = Number(maxArr[1])
-                this.maxDate = Number(maxArr[2])
+                this.maxYear = Number(maxArr[2])
             },
             range (newVal, oldVal) {
                 if(newVal === oldVal) return
