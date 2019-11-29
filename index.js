@@ -705,7 +705,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	                if (tempDateTo && tempDateTo.length >= 3) {
 	                    dateTo = tempDateTo[2] + '/' + tempDateTo[1] + '/' + tempDateTo[0];
 	                } else {
-	                    dateFrom = this.value[0];
+	                    dateTo = this.value[1];
 	                }
 	            }
 
