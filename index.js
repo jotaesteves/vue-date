@@ -642,13 +642,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	    },
 	    watch: {
 	        min: function min(v) {
-	            var minArr = v.split('/');
+	            var minArr = v.split('-');
 	            this.minDate = Number(minArr[0]);
 	            this.minMonth = Number(minArr[1]);
 	            this.minYear = Number(minArr[2]);
 	        },
 	        max: function max(v) {
-	            var maxArr = v.split('/');
+	            var maxArr = v.split('-');
 	            this.maxDate = Number(maxArr[0]);
 	            this.maxMonth = Number(maxArr[1]);
 	            this.maxYear = Number(maxArr[2]);
@@ -738,12 +738,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	            } else {
 	                _this2.coordinates = { left: '0', top: window.getComputedStyle(_this2.$el.children[0]).offsetHeight + 4 + 'px' };
 	            }
-	            var minArr = _this2.min.split('/');
+	            var minArr = _this2.min.split('-');
 	            _this2.minYear = Number(minArr[0]);
 	            _this2.minMonth = Number(minArr[1]);
 	            _this2.minDate = Number(minArr[2]);
 
-	            var maxArr = _this2.max.split('/');
+	            var maxArr = _this2.max.split('-');
 	            _this2.maxYear = Number(maxArr[0]);
 	            _this2.maxMonth = Number(maxArr[1]);
 	            _this2.maxDate = Number(maxArr[2]);
@@ -753,8 +753,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	                    throw new Error('Binding value must be an array in range mode.');
 	                }
 	                if (_this2.value.length) {
-	                    var rangeStart = _this2.value[0].split('/');
-	                    var rangeEnd = _this2.value[1].split('/');
+	                    var rangeStart = _this2.value[0].split('-');
+	                    var rangeEnd = _this2.value[1].split('-');
 	                    _this2.tmpStartYear = Number(rangeStart[0]);
 	                    _this2.tmpStartMonth = Number(rangeStart[1]) - 1;
 	                    _this2.tmpStartDate = Number(rangeStart[2]);
