@@ -330,10 +330,21 @@
                 return (!this.value[0] && !this.value[1])
             },
             pickerOutput: function () {
+                if(this.range){
+                    let tempDateFrom, dateFrom
+                    let tempDateTo, dateTo
+
+                    tempDateFrom = this.value[0].split['-']
+                    dateFrom = tempDateFrom[2]+'/'+tempDateFrom[1]+'/'+tempDateFrom[0]
+
+                    tempDateTo = this.value[0].split['-']
+                    dateTo = tempDateTo[2]+'/'+tempDateTo[1]+'/'+tempDateTo[0]
+                }
+
                 if(this.showFromTo){
-                    return this.range ? 'From '+this.value[0] + ' to ' + this.value[1] : this.value
+                    return this.range ? 'From '+dateFrom + ' to ' + tempDateTo : this.value
                 } else {
-                    return this.range ? this.value[0] + ' - ' + this.value[1] : this.value
+                    return this.range ? dateFrom + ' - ' + tempDateTo : this.value
                 }
             }
         },
