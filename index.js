@@ -688,17 +688,25 @@ return /******/ (function(modules) { // webpackBootstrap
 	            return !this.value[0] && !this.value[1];
 	        },
 	        pickerOutput: function pickerOutput() {
-	            if (this.range) {
+	            if (this.range && this.value[0] && this.value[1]) {
 	                var _dateFrom = void 0;
 	                var tempDateFrom = void 0;
 	                var _dateTo = void 0;
 	                var tempDateTo = void 0;
 
 	                tempDateFrom = this.value[0].split['-'];
-	                _dateFrom = tempDateFrom[2] + '/' + tempDateFrom[1] + '/' + tempDateFrom[0];
+	                if (tempDateFrom.length >= 3) {
+	                    _dateFrom = tempDateFrom[2] + '/' + tempDateFrom[1] + '/' + tempDateFrom[0];
+	                } else {
+	                    _dateFrom = this.value[0];
+	                }
 
-	                tempDateTo = this.value[0].split['-'];
-	                _dateTo = tempDateTo[2] + '/' + tempDateTo[1] + '/' + tempDateTo[0];
+	                tempDateTo = this.value[1].split['-'];
+	                if (tempDateTo.length >= 3) {
+	                    _dateTo = tempDateTo[2] + '/' + tempDateTo[1] + '/' + tempDateTo[0];
+	                } else {
+	                    _dateFrom = this.value[0];
+	                }
 	            }
 
 	            if (this.showFromTo) {

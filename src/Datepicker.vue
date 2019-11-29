@@ -330,17 +330,25 @@
                 return (!this.value[0] && !this.value[1])
             },
             pickerOutput: function () {
-                if(this.range){
+                if(this.range && this.value[0] && this.value[1]){
                     let dateFrom
                     let tempDateFrom
                     let dateTo
                     let tempDateTo
 
                     tempDateFrom = this.value[0].split['-']
-                    dateFrom = tempDateFrom[2]+'/'+tempDateFrom[1]+'/'+tempDateFrom[0]
+                    if(tempDateFrom.length >= 3){
+                        dateFrom = tempDateFrom[2]+'/'+tempDateFrom[1]+'/'+tempDateFrom[0]
+                    } else {
+                        dateFrom = this.value[0]
+                    }
 
-                    tempDateTo = this.value[0].split['-']
-                    dateTo = tempDateTo[2]+'/'+tempDateTo[1]+'/'+tempDateTo[0]
+                    tempDateTo = this.value[1].split['-']
+                    if(tempDateTo.length >= 3){
+                        dateTo = tempDateTo[2]+'/'+tempDateTo[1]+'/'+tempDateTo[0]
+                    } else {
+                        dateFrom = this.value[0]
+                    }
                 }
 
                 if(this.showFromTo){
