@@ -331,8 +331,10 @@
             },
             pickerOutput: function () {
                 if(this.range){
-                    let tempDateFrom, dateFrom
-                    let tempDateTo, dateTo
+                    let dateFrom
+                    let tempDateFrom
+                    let dateTo
+                    let tempDateTo
 
                     tempDateFrom = this.value[0].split['-']
                     dateFrom = tempDateFrom[2]+'/'+tempDateFrom[1]+'/'+tempDateFrom[0]

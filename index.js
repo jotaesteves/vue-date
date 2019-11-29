@@ -689,10 +689,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	        },
 	        pickerOutput: function pickerOutput() {
 	            if (this.range) {
-	                var tempDateFrom = void 0,
-	                    _dateFrom = void 0;
-	                var _tempDateTo = void 0,
-	                    dateTo = void 0;
+	                var _dateFrom = void 0;
+	                var tempDateFrom = void 0;
+	                var dateTo = void 0;
+	                var _tempDateTo = void 0;
 
 	                tempDateFrom = this.value[0].split['-'];
 	                _dateFrom = tempDateFrom[2] + '/' + tempDateFrom[1] + '/' + tempDateFrom[0];
