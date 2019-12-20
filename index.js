@@ -520,10 +520,20 @@ return /******/ (function(modules) { // webpackBootstrap
 	            }
 	        },
 	        prevMonthPreview: function prevMonthPreview() {
-	            this.tmpMonth = this.tmpMonth === 0 ? 0 : this.tmpMonth - 1;
+	            if (this.tmpMonth === 0) {
+	                this.tmpYear--;
+	                this.tmpMonth = 11;
+	            } else {
+	                this.tmpMonth--;
+	            }
 	        },
 	        nextMonthPreview: function nextMonthPreview() {
-	            this.tmpMonth = this.tmpMonth === 11 ? 11 : this.tmpMonth + 1;
+	            if (this.tmpMonth === 11) {
+	                this.tmpYear++;
+	                this.tmpMonth = 0;
+	            } else {
+	                this.tmpMonth++;
+	            }
 	        },
 	        selectYear: function selectYear(year) {
 	            if (this.validateYear(year)) return;
