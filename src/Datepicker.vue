@@ -163,11 +163,16 @@
                 }
             },
             prevMonthPreview () {
-                this.tmpMonth = this.tmpMonth === 0 ? 0 : this.tmpMonth - 1
+                if(this.tmpMonth === 0){
+                    this.tmpYear--
+                    this.tmpMonth = 11
+                } else {
+                    this.tmpMonth--
+                }
             },
             nextMonthPreview () {
                 if(this.tmpMonth === 11){
-                    this.chYearRange(1)
+                    this.tmpYear++
                     this.tmpMonth = 0
                 } else {
                     this.tmpMonth++
