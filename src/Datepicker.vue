@@ -166,7 +166,12 @@
                 this.tmpMonth = this.tmpMonth === 0 ? 0 : this.tmpMonth - 1
             },
             nextMonthPreview () {
-                this.tmpMonth = this.tmpMonth === 11 ? 11 : this.tmpMonth + 1
+                if(this.tmpMonth === 11){
+                    this.chYearRange(1)
+                    this.tmpMonth = 0
+                } else {
+                    this.tmpMonth++
+                }
             },
             selectYear (year) {
                 if(this.validateYear(year)) return
